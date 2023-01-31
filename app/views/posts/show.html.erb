@@ -12,7 +12,7 @@
          <div class="show__date">
             <strong>Posted by <%= "Unkown" %></strong><%= time_ago_in_words(@post.created_at) %> ago.
         </div>
-        <h3 class="show__title"><%= "Secret Post" %></h3>
+        <h3 class="show__title"><%= "This Post is Hidden" %></h3>
               <div class="show__content"> </div>
     <% end %>
 
@@ -56,7 +56,7 @@
                         <% @post.comments.each do |comment| %>
                             <div class="comment__item">
                                 <div class="comment__date">
-                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= "Anoynymous "%>:
+                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= "Unknown "%>:
                                 <p class="comment__description"><%= "Hidden Comment" %></p>
                                 </div>
                             </div>
