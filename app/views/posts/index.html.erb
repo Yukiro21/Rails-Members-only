@@ -1,0 +1,39 @@
+<div class="container">
+    <%# if the not curent user the post title will be secret and the author will change into the anonymous %>
+    <% if !current_user  %>
+        <%@posts.each do|post|%>
+        <div class="card">
+             <h3>
+                 <%= link_to (current_user ? post.title : "Show Post"), post_path(post), class: "card__title" %>
+                </h3>
+            <div class="card__content"> </div>
+
+            <div class="card__date">
+                <%="Unknown" %> 
+          <%= truncate(post.description, length: 40, separator: ' ') %>
+            </div>
+                <%= link_to "Read More", post_path(post), class: "card__arrow" %>
+        </div>
+        <%end%>
+
+    <% else %>
+
+    <%@posts.each do|post|%>
+        <div class="card">
+            <h3><%= link_to post.title, post_path(post), class: "card__title" %></h3>
+            <p class="card__content"><%=truncate(post.description, length:40, separator: ' ')%></p>
+
+            <div class="card__date">
+                 <%= post.user&.username || "Unknown" %> 
+        <%= post.created_at.strftime("%B %d, %Y at %I:%M%p") %>
+            </div>
+                <%= link_to "Read More", post_path(post), class: "card__arrow" %>
+        </div>
+    <%end%>
+    <%end%>
+
+
+
+
+
+</div>
